@@ -14,6 +14,7 @@ connections = [];
 
 io.on("connection", function (socket) {
   console.log("New Client Connection");
+  console.log(socket);
   io.emit("message", "welcome");
   io.emit("message", "new user connected");
 
