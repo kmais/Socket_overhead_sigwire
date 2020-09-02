@@ -14,14 +14,8 @@ server.listen(PORT, function () {
   console.log("server running");
 });
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
 users = [];
 connections = [];
-
-/*  */
 
 io.on("connection", function (socket) {
   console.log("New Client Connection");
