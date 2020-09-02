@@ -24,7 +24,7 @@ io.on("connection", function (socket) {
     io.emit("message", "user disconnected");
   });
 
-  io.on("clickedIT", function (data) {
+  socket.on("clickedIT", function (data) {
     console.log("clickedIT");
     console.log(data);
     io.emit("notify", data);
