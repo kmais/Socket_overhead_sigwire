@@ -17,7 +17,7 @@ app.get("/", function (req, res) {
  */
 
 io.sockets.on("connection", function (socket) {
-  console.log(socket);
+  //console.log(socket);
   connections.push(socket);
   console.log("connected: %s sockets connected", connections.length);
 
