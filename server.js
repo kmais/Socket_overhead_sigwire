@@ -4,11 +4,11 @@ const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
 const https = require("https");
 
+server.listen(process.env.PORT || 3000);
+console.log("server running");
+
 users = [];
 connections = [];
-
-app.listen(process.env.PORT || 3000);
-console.log("server running");
 
 /* 
 app.get("/", function (req, res) {
