@@ -17,6 +17,7 @@ io.on("connection", function (socket) {
   console.log(socket);
   io.emit("message", "welcome");
   io.emit("message", "new user connected");
+  io.emit("socketInfo", socket);
 
   socket.on("disconnect", function () {
     console.log("user disconnected");
