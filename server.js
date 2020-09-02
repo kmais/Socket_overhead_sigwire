@@ -20,14 +20,14 @@ io.sockets.on("connection", function (socket) {
   connections.push(socket);
   console.log("connected: %s sockets connected", connections.length);
 
-  socket.emit("roomInfo", {
+  socket.broadcast.emit("roomInfo", {
     roomSize: connections.length,
   });
 
   socket.on("disconnect", function (data) {
     //disconnect
     connections.splice(connections.indexOf(socket), 1);
-    socket.emit("User Disconnected", {
+    socket.broadcast.emit("User Disconnected", {
       roomSize: connections.length,
     });
     console.log("disconnected: %s sockets connected", connections.length);
