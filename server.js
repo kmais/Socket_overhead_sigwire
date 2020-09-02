@@ -20,7 +20,7 @@ io.sockets.on("connection", function (socket) {
   connections.push(socket);
   console.log("connected: %s sockets connected", connections.length);
 
-  socket.broadcast.emit("roomInfo", {
+  io.emit("roomInfo", {
     roomSize: connections.length,
   });
 
