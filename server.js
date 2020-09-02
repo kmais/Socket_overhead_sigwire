@@ -27,7 +27,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("disconnect", function (data) {
     //disconnect
     connections.splice(connections.indexOf(socket), 1);
-    socket.emit("roomInfo", {
+    socket.emit("User Disconnected", {
       roomSize: connections.length,
     });
     console.log("disconnected: %s sockets connected", connections.length);
