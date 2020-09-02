@@ -4,6 +4,7 @@ const express = require("express");
 const socketio = require("socket.io");
 
 const app = express();
+
 const server = http.createServer(app);
 const io = socketio(server);
 
@@ -13,14 +14,14 @@ server.listen(PORT, function () {
   console.log("server running");
 });
 
-users = [];
-connections = [];
-
-/* 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
- */
+
+users = [];
+connections = [];
+
+/*  */
 
 io.on("connection", function (socket) {
   console.log("New Client Connection");
