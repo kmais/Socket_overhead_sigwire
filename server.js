@@ -14,4 +14,11 @@ connections = [];
 
 io.on("connection", function (socket) {
   console.log("New Client Connection");
+  socket.emit("message", "welcome");
+  socket.broadcast.emit("message", "new user connected");
+
+  socket.on("disconnect", function () {
+    console.log("user disconnected");
+    io.emit("message", "user disconnected");
+  });
 });
