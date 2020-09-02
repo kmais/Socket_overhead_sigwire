@@ -1,18 +1,13 @@
-const path = require("path");
-const https = require("https");
-const express = require("express");
-const socketio = require("socket.io");
+var express = require("express");
+var app = express();
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server);
 
-const app = express();
+users = [];
+connections = [];
 
-const server = https.createServer(app);
-const io = socketio(server);
-
-const PORT = process.env.PORT;
-
-server.listen(PORT, function () {
-  console.log("server running");
-});
+server.listen(process.env.PORT || 3000);
+console.log("server running");
 
 users = [];
 connections = [];
