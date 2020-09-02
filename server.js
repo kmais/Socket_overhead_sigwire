@@ -15,8 +15,8 @@ connections = [];
 io.on("connection", function (socket) {
   console.log("New Client Connection");
   console.log(socket.id);
-  io.emit("message", "welcome");
-  io.emit("message", "new user connected");
+  socket.emit("message", "welcome");
+  socket.broadcast.emit("message", "new user connected");
   io.emit("socketInfo", socket.id);
 
   socket.on("disconnect", function () {
@@ -27,6 +27,6 @@ io.on("connection", function (socket) {
   socket.on("clickedIT", function (data) {
     console.log("clickedIT");
     console.log(data);
-    io.emit("notify", data);
+    socket.broadcast.emit("notify", data);
   });
 });
