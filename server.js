@@ -17,6 +17,7 @@ app.get("/", function (req, res) {
  */
 
 io.sockets.on("connection", function (socket) {
+  console.log(socket);
   connections.push(socket);
   console.log("connected: %s sockets connected", connections.length);
 
@@ -25,9 +26,10 @@ io.sockets.on("connection", function (socket) {
   });
 
   socket.on("disconnect", function (data) {
+    console.log(data);
     //disconnect
     connections.splice(connections.indexOf(socket), 1);
-    socket.broadcast.emit("User Disconnected", {
+    io.emit("User Disconnected", {
       roomSize: connections.length,
     });
     console.log("disconnected: %s sockets connected", connections.length);
