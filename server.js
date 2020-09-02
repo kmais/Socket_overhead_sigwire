@@ -5,7 +5,7 @@ const socketio = require("socket.io");
 
 const app = express();
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 const io = socketio(server);
 
 const PORT = 3000 || process.env.PORT;
