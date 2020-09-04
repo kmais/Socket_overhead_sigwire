@@ -42,29 +42,24 @@ io.on("connection", function (socket) {
     console.log(data);
     users.push(data);
     for (let val of users) {
+      newUsers = [];
       console.log(val.socket + " " + val.user);
       2;
 
       if (io.sockets.connected[val.socket]) {
         console.log("socket " + val.socket + " verified");
+        newUsers.push(val);
       } else {
         console.log("socket " + val.socket + " disconnected");
       }
     }
-
+    users = newUsers;
     io.emit("usersUpdated", users);
   });
 });
 
 var UserUpdateLoop = setInterval(function () {
   for (let val of users) {
-    console.log(val.socket + " " + val.user);
-    2;
-
-    if (io.sockets.connected[val.socket]) {
-      //console.log("socket " + val.socket + " verified");
-    } else {
-      //console.log("socket " + val.socket + " disconnected");
-    }
+    io.emit("usersUpdated", users);
   }
 }, 10000);
