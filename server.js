@@ -54,17 +54,17 @@ io.on("connection", function (socket) {
 
     io.emit("usersUpdated", users);
   });
-
-  var UserUpdateLoop = setInterval(function () {
-    for (let val of users) {
-      console.log(val.socket + " " + val.user);
-      2;
-
-      if (io.sockets.connected[val.socket]) {
-        console.log("socket " + val.socket + " verified");
-      } else {
-        console.log("socket " + val.socket + " disconnected");
-      }
-    }
-  }, 10000);
 });
+
+var UserUpdateLoop = setInterval(function () {
+  for (let val of users) {
+    console.log(val.socket + " " + val.user);
+    2;
+
+    if (io.sockets.connected[val.socket]) {
+      console.log("socket " + val.socket + " verified");
+    } else {
+      console.log("socket " + val.socket + " disconnected");
+    }
+  }
+}, 10000);
