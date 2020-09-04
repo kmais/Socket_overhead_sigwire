@@ -42,7 +42,7 @@ io.on("connection", function (socket) {
     console.log(data);
     users.push(data);
     for (let val of users) {
-      console.log(val);
+      console.log(val.socket + " " + val.user);
     }
 
     io.emit("usersUpdated", users);
