@@ -67,8 +67,9 @@ io.on("connection", function (socket) {
 });
 
 var UserUpdateLoop = setInterval(function () {
-  for (i = 0; i < users.length; i++) {
-    console.log(users[i]);
+  if (!io.sockets.connected[users[i].socket]) {
+    console.log("disconnected");
+    users.slice(i, 1);
   }
   io.emit("usersUpdated", users);
 }, 10000);
