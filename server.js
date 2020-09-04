@@ -51,5 +51,9 @@ io.on("connection", function (socket) {
     console.log("userSetupResponse");
     console.log(data);
     socket.broadcast.emit("userSetupResponse", data);
+
+    users.push(data);
+
+    console.log(users);
   });
 });
