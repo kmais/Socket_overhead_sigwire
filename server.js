@@ -18,9 +18,6 @@ io.on("connection", function (socket) {
   socket.emit("message", "welcome");
   socket.broadcast.emit("message", "new user connected");
   io.emit("socketInfo", socket.id);
-  users.push(data);
-  io.emit("usersInfo", users);
-  console.log(users);
 
   socket.on("disconnect", function () {
     console.log("user disconnected");
@@ -37,11 +34,10 @@ io.on("connection", function (socket) {
     console.log(data);
     socket.broadcast.emit("notify", data);
   });
-  /*
+  /* */
   socket.on("userUpdate", function (data) {
     console.log("User Update");
 
     console.log(data);
   });
-  */
 });
