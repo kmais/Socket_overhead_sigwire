@@ -44,12 +44,12 @@ io.on("connection", function (socket) {
   socket.on("UserSetupQuery", function (data) {
     console.log("UserSetupQuery");
     console.log(data);
-    socket.broadcast.emit("UserSetupQuery", data);
+    io.emit("UserSetupQuery", data);
   });
 
   socket.on("userSetupResponse", function (data) {
-    console.log("UserSetupQuery");
+    console.log("userSetupResponse");
     console.log(data);
-    socket.broadcast.emit("userSetupResponse", data);
+    io.emit("userSetupResponse", data);
   });
 });
