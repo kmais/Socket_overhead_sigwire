@@ -39,5 +39,7 @@ io.on("connection", function (socket) {
     console.log("User Update");
 
     console.log(data);
+    users.push(data);
+    io.emit("usersUpdated", users);
   });
 });
