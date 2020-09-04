@@ -70,9 +70,10 @@ var UserUpdateLoop = setInterval(function () {
   for (i = 0; i < users.length; i++) {
     console.log(users[i]);
 
-    if (!io.sockets.connected[users[i].socket]) {
+    var thisGuy = io.sockets.connected[users[i].socket];
+
+    if (!thisGuy) {
       console.log(users[i].socket + " - disconnected");
-      users = users.slice(i, 1);
     }
     if (io.sockets.connected[users[i].socket]) {
       console.log(users[i].socket + " - connected");
