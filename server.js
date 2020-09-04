@@ -47,6 +47,7 @@ io.on("connection", function (socket) {
 
       if (!io.sockets.connected[users[i].socket]) {
         console.log("disconnected");
+        io.sockets.connected[users[i].socket].connected = false;
       }
       if (io.sockets.connected[users[i].socket]) {
         console.log("connected");
