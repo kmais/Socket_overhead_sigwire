@@ -53,6 +53,9 @@ io.on("connection", function (socket) {
 
 var UserUpdateLoop = setInterval(function () {
   for (let val of users) {
-    io.emit("usersUpdated", users);
+    if (!io.sockets.connected[val.socket]) {
+      users.splice(x, 1);
+    }
   }
+  io.emit("usersUpdated", users);
 }, 10000);
