@@ -34,4 +34,10 @@ io.on("connection", function (socket) {
     console.log(data);
     socket.broadcast.emit("notify", data);
   });
+
+  socket.on("clientConnect", function (data) {
+    console.log("New clientConnect");
+    console.log(data);
+    socket.broadcast.emit("NEWclientConnect", data);
+  });
 });
