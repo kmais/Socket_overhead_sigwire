@@ -47,10 +47,10 @@ io.on("connection", function (socket) {
 
       if (!io.sockets.connected[users[i].socket]) {
         console.log("disconnected");
-        io.sockets.connected[users[i].socket].connected = false;
+        users.slice(i, 1);
       }
       if (io.sockets.connected[users[i].socket]) {
-        console.log("connected");
+        console.log(users[i].socket + " - connected");
       }
     }
 
