@@ -24,6 +24,11 @@ io.on("connection", function (socket) {
     io.emit("message", "user disconnected");
   });
 
+  socket.on("newAgent", function () {
+    console.log("user disconnected");
+    io.emit("message", "user disconnected");
+  });
+
   socket.on("clickedIT", function (data) {
     console.log("clickedIT");
     console.log(data);
