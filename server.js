@@ -40,4 +40,16 @@ io.on("connection", function (socket) {
     console.log(data);
     socket.broadcast.emit("NEWclientConnect", data);
   });
+
+  socket.on("UserSetupQuery", function (data) {
+    console.log("UserSetupQuery");
+    console.log(data);
+    socket.broadcast.emit("UserSetupQuery", data);
+  });
+
+  socket.on("userSetupResponse", function (data) {
+    console.log("UserSetupQuery");
+    console.log(data);
+    socket.broadcast.emit("userSetupResponse", data);
+  });
 });
