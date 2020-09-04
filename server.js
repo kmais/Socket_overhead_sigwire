@@ -50,10 +50,9 @@ io.on("connection", function (socket) {
   socket.on("userSetupResponse", function (data) {
     console.log("userSetupResponse");
     console.log(data);
-    socket.broadcast.emit("userSetupResponse", data);
 
     users.push(data);
-
+    socket.broadcast.emit("userSetupResponse", users);
     console.log(users);
   });
 });
