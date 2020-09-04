@@ -62,9 +62,9 @@ var UserUpdateLoop = setInterval(function () {
     2;
 
     if (io.sockets.connected[val.socket]) {
-      console.log("socket " + val.socket + " verified");
+      //console.log("socket " + val.socket + " verified");
     } else {
-      console.log("socket " + val.socket + " disconnected");
+      //console.log("socket " + val.socket + " disconnected");
     }
   }
 }, 10000);
