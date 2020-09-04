@@ -41,6 +41,10 @@ io.on("connection", function (socket) {
 
     console.log(data);
     users.push(data);
+    for (let val of users) {
+      console.log(val);
+    }
+
     io.emit("usersUpdated", users);
   });
 });
