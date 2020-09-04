@@ -18,6 +18,9 @@ io.on("connection", function (socket) {
   socket.emit("message", "welcome");
   socket.broadcast.emit("message", "new user connected");
   io.emit("socketInfo", socket.id);
+  users.push(data);
+  io.emit("usersInfo", users);
+  console.log(users);
 
   socket.on("disconnect", function () {
     console.log("user disconnected");
@@ -35,24 +38,9 @@ io.on("connection", function (socket) {
     socket.broadcast.emit("notify", data);
   });
 
-  socket.on("clientConnect", function (data) {
-    console.log("New clientConnect");
-    console.log(data);
-    socket.broadcast.emit("NEWclientConnect", data);
-  });
+  socket.on("userUpdate", function (data) {
+    console.log("User Update");
 
-  socket.on("UserSetupQuery", function (data) {
-    console.log("UserSetupQuery");
     console.log(data);
-    io.emit("NewUserSetupQuery", data);
-  });
-
-  socket.on("userSetupResponse", function (data) {
-    console.log("userSetupResponse");
-    console.log(data);
-
-    users.push(data);
-    socket.broadcast.emit("userSetupResponse", users);
-    console.log(users);
   });
 });
