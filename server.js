@@ -37,10 +37,11 @@ io.on("connection", function (socket) {
     console.log(data);
     socket.broadcast.emit("notify", data);
   });
-
+  /*
   socket.on("userUpdate", function (data) {
     console.log("User Update");
 
     console.log(data);
   });
+  */
 });
