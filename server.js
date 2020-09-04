@@ -41,21 +41,33 @@ io.on("connection", function (socket) {
 
     console.log(data);
     users.push(data);
-    for (let val of users) {
+
+    for (i = 0; i < users.length; i++) {
+      console.log(users[i]);
+
+      if (!io.sockets.connected[users[i].socket]) {
+        console.log("disconnected");
+      }
+      if (io.sockets.connected[users[i].socket]) {
+        console.log("connected");
+      }
+    }
+
+    /*
+     for (let val of users) {
       if (!io.sockets.connected[val.socket]) {
         users.splice(x, 1);
       }
-    }
+    } 
+    */
 
     io.emit("usersUpdated", users);
   });
 });
 
 var UserUpdateLoop = setInterval(function () {
-  for (let val of users) {
-    if (!io.sockets.connected[val.socket]) {
-      users.splice(x, 1);
-    }
+  for (i = 0; i < users.length; i++) {
+    console.log(users[i]);
   }
   io.emit("usersUpdated", users);
 }, 10000);
