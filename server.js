@@ -19,8 +19,9 @@ io.on("connection", function (socket) {
   socket.broadcast.emit("message", "new user connected");
   io.emit("socketInfo", socket.id);
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", function (data) {
     console.log("user disconnected");
+    console.log(data);
     io.emit("message", "user disconnected");
   });
 
